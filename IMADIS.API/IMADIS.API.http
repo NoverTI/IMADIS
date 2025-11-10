@@ -1,0 +1,6 @@
+@IMADIS.API_HostAddress = http://localhost:5283
+
+GET {{IMADIS.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

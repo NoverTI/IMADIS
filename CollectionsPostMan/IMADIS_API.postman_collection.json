@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "imadis-api-collection",
+		"name": "IMADIS API - Estudiantes",
+		"description": "Colección de pruebas para la API de IMADIS con estructura Ingreso, Modelos, Aplicación, Datos, Integración, Sistema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Estudiantes",
+			"item": [
+				{
+					"name": "Obtener todos los estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante"
+							]
+						},
+						"description": "Obtiene todos los estudiantes con soporte OData"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los estudiantes (con filtro)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante?$filter=contains(Nombre,'Juan')",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "contains(Nombre,'Juan')"
+								}
+							]
+						},
+						"description": "Obtiene estudiantes filtrados por nombre usando OData"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los estudiantes (ordenados)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante?$orderby=Apellido asc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante"
+							],
+							"query": [
+								{
+									"key": "$orderby",
+									"value": "Apellido asc"
+								}
+							]
+						},
+						"description": "Obtiene estudiantes ordenados por apellido usando OData"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los estudiantes (con paginación)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante?$top=2&$skip=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "2"
+								},
+								{
+									"key": "$skip",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Obtiene estudiantes con paginación usando OData"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estudiante por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante",
+								"1"
+							]
+						},
+						"description": "Obtiene un estudiante específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nuevo estudiante",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"Martínez\",\n  \"email\": \"ana.martinez@example.com\",\n  \"fechaInscripcion\": \"2024-11-10T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante"
+							]
+						},
+						"description": "Crea un nuevo estudiante"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar estudiante",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Pérez Actualizado\",\n  \"email\": \"juan.perez.nuevo@example.com\",\n  \"fechaInscripcion\": \"2023-01-15T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante",
+								"1"
+							]
+						},
+						"description": "Actualiza un estudiante existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar estudiante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/odata/Estudiante/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"odata",
+								"Estudiante",
+								"1"
+							]
+						},
+						"description": "Elimina un estudiante por su ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones CRUD para el módulo de Estudiantes"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:5001",
+			"type": "string"
+		}
+	]
+}
